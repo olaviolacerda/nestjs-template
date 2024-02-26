@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling, testing and building your project before pushing'
+
+npm run format
+npm run lint
+npm test
+npm run test:e2e
+npm run build
+
+# If everything passes... Now we can push
+echo '✅✅✅✅ You win this time... I am pushing this now. ✅✅✅✅'
