@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  Patch,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
 import { RolesGuard } from '../../auth/guards/roles.guard';
 import {
@@ -11,7 +21,11 @@ import { UsersService } from '../../domain/services/users.service';
 import { Public } from '../../common/decorators/public.decorator';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { Role } from '../../common/enums/role.enum';
-import { UserResponse, CreateUserDto } from 'src/infra/dtos/users.dto';
+import {
+  UserResponse,
+  CreateUserDto,
+  UpdateUserDto,
+} from 'src/infra/dtos/users.dto';
 
 @ApiTags('users') // put the name of the controller in swagger
 @Controller('users')
@@ -23,6 +37,7 @@ export class UsersController {
   @ApiResponse({
     status: 201,
     type: UserResponse,
+    description: 'User was successfully created.',
   })
   @Public()
   @Post()
@@ -30,6 +45,20 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @ApiOperation({ summary: 'create an admin user' })
+  @ApiResponse({
+    status: 201,
+    type: UserResponse,
+    description: 'User with Admin role was successfully created.',
+  })
+  @Post('admin')
+  @ApiBearerAuth('access-token')
+  @Roles(Role.Admin)
+  createAdminUser(@Body() createUserDto: CreateUserDto) {
+    return this.usersService.createAdminUser(createUserDto);
+  }
+
+  @ApiOperation({ summary: 'find all users' })
   @ApiResponse({
     status: 200,
     isArray: true,
@@ -40,5 +69,32 @@ export class UsersController {
   @Get()
   findAll() {
     return this.usersService.findAll();
+  }
+
+  @ApiOperation({ summary: 'update an user' })
+  @ApiResponse({
+    status: 200,
+    type: UserResponse,
+    description: 'User was successfully updated.',
+  })
+  @ApiBearerAuth('access-token')
+  @Roles(Role.Admin)
+  @HttpCode(200)
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update(id, updateUserDto);
+  }
+
+  @ApiOperation({ summary: 'delete an admin user' })
+  @ApiResponse({
+    status: 204,
+    description: 'User was successfully deleted.',
+  })
+  @ApiBearerAuth('access-token')
+  @Roles(Role.Admin)
+  @HttpCode(204)
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.usersService.remove(id);
   }
 }

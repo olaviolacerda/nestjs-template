@@ -12,9 +12,17 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   readonly username: string;
+}
+
+export class UpdateUserDto {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly username: string;
 
   @ApiProperty()
   @IsEnum(Role)
+  @IsNotEmpty()
   readonly role: Role;
 }
 
