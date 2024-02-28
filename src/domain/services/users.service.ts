@@ -5,16 +5,15 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/infra/entities/user.entity';
-
-import { UsersRepository } from 'src/infra/repositories/users.repository';
 import { CreateUserDto, UpdateUserDto } from 'src/infra/dtos/users.dto';
 import { Role } from 'src/common/enums/role.enum';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private readonly usersRepository: UsersRepository,
+    private readonly usersRepository: Repository<User>,
   ) {}
 
   prepareUserResponse(user: User): Partial<User> {
