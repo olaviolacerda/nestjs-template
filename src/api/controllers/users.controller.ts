@@ -1,32 +1,31 @@
 import {
-  Body,
   Controller,
-  Delete,
+  UseGuards,
+  Post,
+  Body,
   Get,
   HttpCode,
-  Param,
   Patch,
-  Post,
-  UseGuards,
+  Param,
+  Delete,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
-import { UsersService } from '../../domain/services/users.service';
-import { Public } from '../../common/decorators/public.decorator';
-import { Roles } from '../../common/decorators/roles.decorator';
-import { Role } from '../../common/enums/role.enum';
+import { Public } from 'src/common/decorators/public.decorator';
+import { Roles } from 'src/common/decorators/roles.decorator';
 import {
   UserResponse,
   CreateUserDto,
   UpdateUserDto,
 } from 'src/common/dtos/users.dto';
+import { Role } from 'src/common/enums/role.enum';
 import { JwtAuthGuard } from 'src/domain/auth/guards/jwt.guard';
 import { RolesGuard } from 'src/domain/auth/guards/roles.guard';
-
+import { UsersService } from 'src/domain/services/users.service';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 @ApiTags('users')
 @Controller('users')
 @UseGuards(JwtAuthGuard, RolesGuard)
