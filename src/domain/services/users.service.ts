@@ -29,7 +29,8 @@ export class UsersService {
       throw new BadRequestException();
     }
 
-    const savedUser = await this.usersRepository.save(createUserDto);
+    const createdUser = await this.usersRepository.create(createUserDto);
+    const savedUser = await this.usersRepository.save(createdUser);
     return this.prepareUserResponse(savedUser);
   }
 
