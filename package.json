@@ -22,12 +22,12 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "schema:sync": "npx typeorm-ts-node-commonjs schema:sync",
     "typeorm:cache": "npx typeorm-ts-node-commonjs cache:clear",
-    "schema:drop": "npx typeorm-ts-node-commonjs -d ./src/db/datasource.ts",
-    "migration:create": "typeorm migration:create ./src/db/migrations/schema-update",
-    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d ./src/db/datasource.ts",
-    "migration:show": "npx typeorm-ts-node-commonjs migration:show -d ./src/db/datasource.ts",
-    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d  ./src/db/datasource.ts",
-    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./src/db/datasource.ts"
+    "schema:drop": "npx typeorm-ts-node-commonjs -d db/datasource.ts",
+    "migration:create": "typeorm migration:create db/migrations/schema-update",
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d db/datasource.ts",
+    "migration:show": "npx typeorm-ts-node-commonjs migration:show -d db/datasource.ts",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d  db/datasource.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d db/datasource.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.2",

@@ -1,6 +1,6 @@
-import * as dotenv from 'dotenv';
+import { config } from 'dotenv';
 
-dotenv.config();
+config();
 
 export default {
   type: 'postgres',
@@ -10,7 +10,7 @@ export default {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   migrationsTableName: 'migrations',
-  migrations: ['src/db/migrations/*.ts'],
+  migrations: ['db/migrations/*.ts'],
   entities: ['src/infra/entities/*.entity.ts'],
   ssl: false,
   synchronize: false,
