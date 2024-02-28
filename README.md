@@ -1,53 +1,49 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+<h1 align="center">Welcome to nest-typescript-template 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/node-18.x-blue.svg" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
 </p>
 
-## Description
+> Cloned from Nest TypeScript starter repository and updated.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### ✨ [Demo](https://nestjs-template-seven.vercel.app/)
 
-## Installation
+## Prerequisites
 
-```bash
-$ npm install
+- node 18.x
+
+## Install
+
+```sh
+npm install
 ```
 
-## Running the app
+## Usage
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```sh
+npm run start:dev
 ```
 
-## Test
+## Run tests
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```sh
+npm run test
 ```
 
-## Support
+## Author
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+👤 **Olavio Lacerda**
 
-## Stay in touch
+* Website: https://www.olavio.dev
+* Github: [@olaviolacerda](https://github.com/olaviolacerda)
+* LinkedIn: [@olavio-lacerda](https://linkedin.com/in/olavio-lacerda)
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Show your support
 
-## License
+Give a ⭐️ if this project helped you!
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
