@@ -9,17 +9,17 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { Public } from 'src/common/decorators/public.decorator';
-import { Roles } from 'src/common/decorators/roles.decorator';
+import { Public } from '../../common/decorators/public.decorator';
+import { Roles } from '../../common/decorators/roles.decorator';
 import {
   UserResponse,
   CreateUserDto,
   UpdateUserDto,
-} from 'src/common/dtos/users.dto';
-import { Role } from 'src/common/enums/role.enum';
-import { JwtAuthGuard } from 'src/domain/auth/guards/jwt.guard';
-import { RolesGuard } from 'src/domain/auth/guards/roles.guard';
-import { UsersService } from 'src/domain/services/users.service';
+} from '../../common/dtos/users.dto';
+import { Role } from '../../common/enums/role.enum';
+import { JwtAuthGuard } from '../../domain/auth/guards/jwt.guard';
+import { RolesGuard } from '../../domain/auth/guards/roles.guard';
+import { UsersService } from '../../domain/services/users.service';
 import {
   ApiTags,
   ApiOperation,
