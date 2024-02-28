@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from '../../domain/services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from '../../common/constants';

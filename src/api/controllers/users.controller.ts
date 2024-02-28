@@ -17,9 +17,9 @@ import {
   UpdateUserDto,
 } from '../../common/dtos/users.dto';
 import { Role } from '../../common/enums/role.enum';
-import { JwtAuthGuard } from '../../domain/auth/guards/jwt.guard';
-import { RolesGuard } from '../../domain/auth/guards/roles.guard';
-import { UsersService } from '../../domain/services/users.service';
+import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
+import { RolesGuard } from '../../core/auth/guards/roles.guard';
+import { UsersService } from '../../core/services/users.service';
 import {
   ApiTags,
   ApiOperation,
