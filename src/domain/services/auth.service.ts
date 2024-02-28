@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
 import { User } from '../../infra/entities/user.entity';
+import { PayloadToken } from 'src/infra/dtos/auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,7 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<Partial<User>> {
-    const user = await this.usersService.findOne(username);
+    const user = await this.usersService.findByUsername(username);
     const isPasswordMatch = await bcrypt.compare(pass, user.password);
     if (isPasswordMatch) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -22,10 +23,9 @@ export class AuthService {
     return null;
   }
 
-  async login(user: Partial<User>) {
-    const payload = { username: user.username, sub: user.id };
+  async login(user: PayloadToken) {
     return {
-      access_token: this.jwtService.sign(payload),
+      accessToken: this.jwtService.sign(user),
     };
   }
 }
