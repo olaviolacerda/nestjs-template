@@ -16,8 +16,8 @@ import {
 } from '@nestjs/swagger';
 import { LoginDto, LoginResponse } from '../../common/dtos/auth.dto';
 import { LocalAuthGuard } from '../../core/auth/guards/local.guard';
-import { JwtAuthGuard } from 'src/core/auth/guards/jwt.guard';
-import { JwtRefreshAuthGuard } from 'src/core/auth/guards/jwt-refresh.guard';
+import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
+import { JwtRefreshAuthGuard } from '../../core/auth/guards/jwt-refresh.guard';
 
 @ApiTags('auth')
 @Controller('auth')
