@@ -8,4 +8,8 @@ export default new DocumentBuilder()
     { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
     'access-token',
   )
+  .addBearerAuth(
+    { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+    'refresh-token',
+  )
   .build();

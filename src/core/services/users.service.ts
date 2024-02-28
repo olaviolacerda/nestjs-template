@@ -60,7 +60,7 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async update(id: User['id'], updateUserDto: UpdateUserDto) {
+  async update(id: User['id'], updateUserDto: Partial<UpdateUserDto>) {
     const user = await this.usersRepository.preload({
       id,
       ...updateUserDto,

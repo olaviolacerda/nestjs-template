@@ -21,6 +21,9 @@ export class User {
   })
   role: Role;
 
+  @Column({ name: 'refresh_token' })
+  refreshToken: string;
+
   @BeforeInsert()
   async hashPassword() {
     if (this.password) {
