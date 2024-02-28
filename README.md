@@ -1,3 +1,16 @@
+> ⚠️ This template is not ready yet.
+
+<p>Pending tasks:</p>
+<ul>
+  <li>Unit testing for users</li>
+  <li>Unit testing for auth</li>
+  <li>E2E testing for auth</li>
+  <li>E2E testing for users</li>
+  <li>Types</li>
+  <li>Folder structure (refactor)</li>
+  <li>Schema validations</li>
+</ul>
+
 <h1 align="center">Welcome to nest-typescript-template 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
@@ -27,23 +40,30 @@ npm install
 npm run start:dev
 ```
 
-## Run tests
+## Run unit tests
 
 ```sh
 npm run test
+```
+
+## Run e2e tests
+
+```sh
+npm run test:e2e
 ```
 
 ## Author
 
 👤 **Olavio Lacerda**
 
-* Website: https://www.olavio.dev
-* Github: [@olaviolacerda](https://github.com/olaviolacerda)
-* LinkedIn: [@olavio-lacerda](https://linkedin.com/in/olavio-lacerda)
+- Website: https://www.olavio.dev
+- Github: [@olaviolacerda](https://github.com/olaviolacerda)
+- LinkedIn: [@olavio-lacerda](https://linkedin.com/in/olavio-lacerda)
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
