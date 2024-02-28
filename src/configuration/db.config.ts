@@ -11,7 +11,7 @@ export default {
   database: process.env.DB_DATABASE,
   migrationsTableName: 'migrations',
   migrations: ['db/migrations/*.ts'],
-  entities: ['src/infra/entities/*.entity.ts'],
+  entities: ['src/infrastructure/entities/*.entity.ts'],
   ssl: false,
   synchronize: false,
   dropSchema: false,

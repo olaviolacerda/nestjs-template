@@ -13,7 +13,7 @@ describe('UsersController', () => {
         {
           provide: UsersService,
           useValue: {
-            get: jest.fn(() => {}), // really it can be anything, but the closer to your actual logic the better
+            get: jest.fn(() => {}),
           },
         },
       ],

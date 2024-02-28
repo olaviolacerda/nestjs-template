@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { AuthService } from 'src/domain/services/auth.service';
 import { UsersService } from 'src/domain/services/users.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { User } from 'src/infra/entities/user.entity';
+import { User } from 'src/domain/entities/user.entity';
 import { Role } from 'src/common/enums/role.enum';
 
 const mockJwtService: Partial<JwtService> = {

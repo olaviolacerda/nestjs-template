@@ -4,8 +4,8 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/infra/entities/user.entity';
-import { CreateUserDto, UpdateUserDto } from 'src/infra/dtos/users.dto';
+import { User } from 'src/domain/entities/user.entity';
+import { CreateUserDto, UpdateUserDto } from 'src/common/dtos/users.dto';
 import { Role } from 'src/common/enums/role.enum';
 import { Repository } from 'typeorm';
 

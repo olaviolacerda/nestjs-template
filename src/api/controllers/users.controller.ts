@@ -9,8 +9,6 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '../../auth/guards/jwt.guard';
-import { RolesGuard } from '../../auth/guards/roles.guard';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -25,11 +23,13 @@ import {
   UserResponse,
   CreateUserDto,
   UpdateUserDto,
-} from 'src/infra/dtos/users.dto';
+} from 'src/common/dtos/users.dto';
+import { JwtAuthGuard } from 'src/domain/auth/guards/jwt.guard';
+import { RolesGuard } from 'src/domain/auth/guards/roles.guard';
 
-@ApiTags('users') // put the name of the controller in swagger
+@ApiTags('users')
 @Controller('users')
-@UseGuards(JwtAuthGuard, RolesGuard) //  makes the all routes as private by default
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

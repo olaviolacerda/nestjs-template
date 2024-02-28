@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" --log-level 'error'",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -98,9 +98,9 @@
       "!**/main.ts",
       "!src/common/**/*.(t|j)s",
       "!src/config/**/*.(t|j)s",
-      "!src/infra/modules/*.(t|j)s",
-      "!src/infra/dtos/**/*.(t|j)s",
-      "!src/infra/entities/**/*.(t|j)s",
+      "!src/infrastructure/modules/*.(t|j)s",
+      "!src/infrastructure/dtos/**/*.(t|j)s",
+      "!src/infrastructure/entities/**/*.(t|j)s",
       "!src/auth/**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",

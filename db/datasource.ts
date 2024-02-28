@@ -1,4 +1,4 @@
-import dbConfig from '../src/config/db.config';
+import dbConfig from '../src/configuration/db.config';
 import { DataSource } from 'typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
