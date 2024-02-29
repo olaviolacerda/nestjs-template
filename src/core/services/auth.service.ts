@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
@@ -8,6 +8,7 @@ import { createHash } from 'crypto';
 import { PayloadToken } from '../../common/types/auth.type';
 import { User } from '../entities/user.entity';
 import { UsersService } from './users.service';
+import { EntityNotFoundError } from 'typeorm';
 
 @Injectable()
 export class AuthService {
@@ -19,12 +20,19 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<Partial<User>> {
     const user = await this.usersService.findByUsername(username);
-    const passwordMatches = await bcrypt.compare(pass, user.password);
+
+    if (!user) {
+      throw new BadRequestException('Something is wrong with your credentials');
+    }
+
+    const passwordMatches = await bcrypt.compare(pass, user?.password);
+
     if (passwordMatches) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = user;
       return result;
     }
+
     return null;
   }
 
