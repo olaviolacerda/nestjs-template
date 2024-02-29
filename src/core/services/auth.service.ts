@@ -8,7 +8,6 @@ import { createHash } from 'crypto';
 import { PayloadToken } from '../../common/types/auth.type';
 import { User } from '../entities/user.entity';
 import { UsersService } from './users.service';
-import { EntityNotFoundError } from 'typeorm';
 
 @Injectable()
 export class AuthService {
