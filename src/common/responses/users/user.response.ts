@@ -1,33 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsEnum } from 'class-validator';
-import { Role } from '../enums/role.enum';
 
-export class CreateUserDto {
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  readonly password: string;
-
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  readonly username: string;
-}
-
-export class UpdateUserDto {
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  readonly username: string;
-
-  @ApiProperty()
-  @IsEnum(Role)
-  @IsNotEmpty()
-  readonly role: Role;
-
-  @IsString()
-  readonly refreshToken: string;
-}
+import { Role } from '../../../common/enums/role.enum';
 
 export class UserResponse {
   @ApiProperty({ example: '123e4567-e89b-12d3-a456-426655440000' })
