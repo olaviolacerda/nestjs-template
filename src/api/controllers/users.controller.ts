@@ -9,7 +9,6 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { Public } from '../../common/decorators/public.decorator';
 import { Roles } from '../../common/decorators/roles.decorator';
 import {
   UserResponse,
@@ -28,7 +27,6 @@ import {
 } from '@nestjs/swagger';
 @ApiTags('users')
 @Controller('users')
-@UseGuards(JwtAuthGuard, RolesGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -38,7 +36,6 @@ export class UsersController {
     type: UserResponse,
     description: 'User was successfully created.',
   })
-  @Public()
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -53,6 +50,7 @@ export class UsersController {
   @Post('admin')
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   createAdminUser(@Body() createUserDto: CreateUserDto) {
     return this.usersService.createAdminUser(createUserDto);
   }
@@ -65,6 +63,7 @@ export class UsersController {
   })
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
@@ -78,6 +77,7 @@ export class UsersController {
   })
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @HttpCode(200)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
@@ -91,6 +91,7 @@ export class UsersController {
   })
   @ApiBearerAuth('access-token')
   @Roles(Role.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {

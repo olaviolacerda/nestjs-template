@@ -21,7 +21,7 @@
     "lint:commit": "commitlint",
     "typeorm": "typeorm-ts-node-commonjs",
     "typeorm:cache": "npx typeorm-ts-node-commonjs cache:clear",
-    "migration:create": "typeorm migration:create db/migrations/schema-update",
+    "migration:create": "typeorm migration:create",
     "migration:generate": "npx typeorm-ts-node-commonjs migration:generate -d db/datasource.ts",
     "migration:show": "npx typeorm-ts-node-commonjs migration:show -d db/datasource.ts",
     "migration:run": "npx typeorm-ts-node-commonjs migration:run -d  db/datasource.ts",
