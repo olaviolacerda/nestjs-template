@@ -6,7 +6,6 @@ import {
   Get,
   Request,
 } from '@nestjs/common';
-import { AuthService } from '../../core/services/auth.service';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -14,10 +13,13 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { LoginDto, LoginResponse } from '../../common/dtos/auth.dto';
-import { LocalAuthGuard } from '../../core/auth/guards/local.guard';
-import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
+
+import { LoginDto } from '../../common/dtos/auth/login.dto';
+import { TokensResponse } from '../../common/responses/auth/tokens.response';
 import { JwtRefreshAuthGuard } from '../../core/auth/guards/jwt-refresh.guard';
+import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
+import { LocalAuthGuard } from '../../core/auth/guards/local.guard';
+import { AuthService } from '../../core/services/auth.service';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -27,7 +29,7 @@ export class AuthController {
   @ApiOperation({ summary: 'login user' })
   @ApiResponse({
     status: 200,
-    type: LoginResponse,
+    type: TokensResponse,
     description: 'User was successfully logged in.',
   })
   @HttpCode(200)
@@ -55,7 +57,7 @@ export class AuthController {
   @ApiBearerAuth('refresh-token')
   @ApiResponse({
     status: 200,
-    type: LoginResponse,
+    type: TokensResponse,
     description: 'Tokens was successfully refreshed.',
   })
   @HttpCode(200)
