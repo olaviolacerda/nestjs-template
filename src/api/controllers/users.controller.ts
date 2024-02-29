@@ -9,22 +9,22 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { Roles } from '../../common/decorators/roles.decorator';
-import {
-  UserResponse,
-  CreateUserDto,
-  UpdateUserDto,
-} from '../../common/dtos/users.dto';
-import { Role } from '../../common/enums/role.enum';
-import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
-import { RolesGuard } from '../../core/auth/guards/roles.guard';
-import { UsersService } from '../../core/services/users.service';
 import {
   ApiTags,
   ApiOperation,
   ApiResponse,
   ApiBearerAuth,
 } from '@nestjs/swagger';
+
+import { Roles } from '../../common/decorators/roles.decorator';
+import { CreateUserDto } from '../../common/dtos/users/create-user.dto';
+import { UpdateUserDto } from '../../common/dtos/users/update-user.dto';
+import { Role } from '../../common/enums/role.enum';
+import { UserResponse } from '../../common/responses/users/user.response';
+import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
+import { RolesGuard } from '../../core/auth/guards/roles.guard';
+import { UsersService } from '../../core/services/users.service';
+
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
