@@ -6,9 +6,7 @@
   <li>Unit testing for auth</li>
   <li>E2E testing for auth</li>
   <li>E2E testing for users</li>
-  <li>Types</li>
   <li>Folder structure (refactor)</li>
-  <li>Schema validations</li>
   <li>Logging</li>
 </ul>
 
