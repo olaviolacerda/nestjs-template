@@ -9,6 +9,7 @@
   <li>Types</li>
   <li>Folder structure (refactor)</li>
   <li>Schema validations</li>
+  <li>Logging</li>
 </ul>
 
 <h1 align="center">Welcome to nest-typescript-template 👋</h1>
@@ -34,6 +35,20 @@
 npm install
 ```
 
+## Start your Database
+
+1. Run the `docker-compose` file. It will run a Postgres container so you may use to develop and test locally.
+
+```sh
+docker-compose up -d
+```
+
+2. Run the migrations to create the initial `users` table.
+
+```sh
+npm run migration:run
+```
+
 ## Usage
 
 ```sh
@@ -52,6 +67,8 @@ npm run test
 npm run test:e2e
 ```
 
+> Please refer to `package.json` for more scripts to run.
+
 ## Author
 
 👤 **Olavio Lacerda**
@@ -63,6 +80,13 @@ npm run test:e2e
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+## Useful resources
+
+- [NestJS Documentation](https://docs.nestjs.com/)
+- [TypeORM Documentation](https://typeorm.io/)
+- [A Step-by-Step Guide to Implement JWT Authentication in NestJS using Passport](https://medium.com/@camillef_58366/implementing-authentication-in-nestjs-using-passport-and-jwt-5a565aa521de)
+- [NestJS Unit Testing](https://www.tomray.dev/nestjs-unit-testing)
 
 ---
 
