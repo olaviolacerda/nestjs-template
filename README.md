@@ -87,6 +87,8 @@ Give a ⭐️ if this project helped you!
 - [TypeORM Documentation](https://typeorm.io/)
 - [A Step-by-Step Guide to Implement JWT Authentication in NestJS using Passport](https://medium.com/@camillef_58366/implementing-authentication-in-nestjs-using-passport-and-jwt-5a565aa521de)
 - [NestJS Unit Testing](https://www.tomray.dev/nestjs-unit-testing)
+- [Testing in NestJS](https://dev.to/chafroudtarek/testing-in-nestjs-a-comprehensive-guide-3hjo)
+- [Advanced Testing in NestJS](https://trilon.io/blog/advanced-testing-strategies-with-mocks-in-nestjs)
 
 ---
 
