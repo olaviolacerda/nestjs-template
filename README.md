@@ -13,8 +13,8 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <img alt="Node Version" src="https://img.shields.io/badge/node-18.x-blue.svg" />
-  <a href="https://coveralls.io/github/nestjs/nest?branch=master">
-    <img src="https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main#5" alt="Coverage" />
+  <a href='https://coveralls.io/github/olaviolacerda/nestjs-template?branch=main'>
+    <img src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main' alt='Coverage Status' />
   </a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
