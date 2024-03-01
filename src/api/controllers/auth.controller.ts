@@ -19,7 +19,7 @@ import { TokensResponse } from '../../common/responses/auth/tokens.response';
 import { JwtRefreshAuthGuard } from '../../core/auth/guards/jwt-refresh.guard';
 import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
 import { LocalAuthGuard } from '../../core/auth/guards/local.guard';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../core/providers/services/auth.service';
 
 @ApiTags('auth')
 @Controller('auth')

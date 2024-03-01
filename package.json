@@ -14,7 +14,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage --detectOpenHandles",
+    "test:cov": "jest --coverage --detectOpenHandles --maxWorkers=1",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/jest/bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json --passWithNoTests",
     "prepare": "husky install",
@@ -97,12 +97,9 @@
     "collectCoverageFrom": [
       "src/**/*.(t|j)s",
       "!**/main.ts",
-      "!src/common/**/*.(t|j)s",
-      "!src/config/**/*.(t|j)s",
-      "!src/infrastructure/modules/*.(t|j)s",
-      "!src/infrastructure/dtos/**/*.(t|j)s",
-      "!src/infrastructure/entities/**/*.(t|j)s",
-      "!src/auth/**/*.(t|j)s"
+      "!src/core/entities/**",
+      "!src/core/modules/**",
+      "!src/common/**"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"

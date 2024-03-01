@@ -9,6 +9,7 @@ import { JwtStrategy } from '../auth/strategies/jwt.strategy';
 import { LocalStrategy } from '../auth/strategies/local.strategy';
 import { AuthService } from '../services/auth.service';
 import { UsersModule } from './users.module';
+import { AuthHelper } from '../providers/helpers/auth.helper';
 
 @Module({
   imports: [UsersModule, PassportModule, JwtModule.register({})],
@@ -19,6 +20,7 @@ import { UsersModule } from './users.module';
     JwtRefreshStrategy,
     LocalStrategy,
     ConfigService,
+    AuthHelper,
   ],
   exports: [AuthService],
 })
