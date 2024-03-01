@@ -12,12 +12,13 @@
 <h1 align="center">Welcome to nest-typescript-template 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <img src="https://img.shields.io/badge/node-18.x-blue.svg" />
+  <img alt="Node Version" src="https://img.shields.io/badge/node-18.x-blue.svg" />
+  <img alt="Coverage" src="https://olaviolacerda.github.io/nestjs-template/badges/coverage.svg" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
-  [![cov](https://olaviolacerda.github.io/nestjs-template/badges/coverage.svg)](https://github.com/olaviolacerda/nestjs-template/actions)
 </p>
+[![cov](https://olaviolacerda.github.io/nestjs-template/badges/coverage.svg)](https://github.com/olaviolacerda/nestjs-template/actions)
 
 > Cloned from Nest TypeScript starter repository and updated.
 
