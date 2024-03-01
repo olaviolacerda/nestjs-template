@@ -13,12 +13,11 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <img alt="Node Version" src="https://img.shields.io/badge/node-18.x-blue.svg" />
-  <img alt="Coverage" src="https://olaviolacerda.github.io/nestjs-template/badges/coverage.svg" />
+  <a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main#5" alt="Coverage" /></a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
-[![cov](https://olaviolacerda.github.io/nestjs-template/badges/coverage.svg)](https://github.com/olaviolacerda/nestjs-template/actions)
 
 > Cloned from Nest TypeScript starter repository and updated.
 
