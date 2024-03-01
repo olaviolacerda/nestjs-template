@@ -2,10 +2,9 @@
 
 <p>Pending tasks:</p>
 <ul>
-  <li>Unit testing for users</li>
-  <li>Unit testing for auth</li>
-  <li>E2E testing for auth</li>
-  <li>E2E testing for users</li>
+  <li>Unit testing</li>
+  <li>E2E testing</li>
+  <li>100% coverage</li>
   <li>Folder structure (refactor)</li>
   <li>Logging</li>
 </ul>
@@ -17,6 +16,7 @@
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  [![cov](https://olaviolacerda.github.io/nestjs-template/badges/coverage.svg)](https://github.com/olaviolacerda/nestjs-template/actions)
 </p>
 
 > Cloned from Nest TypeScript starter repository and updated.

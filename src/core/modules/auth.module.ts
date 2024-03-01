@@ -7,7 +7,7 @@ import { AuthController } from '../../api/controllers/auth.controller';
 import { JwtRefreshStrategy } from '../auth/strategies/jwt-refresh.strategy';
 import { JwtStrategy } from '../auth/strategies/jwt.strategy';
 import { LocalStrategy } from '../auth/strategies/local.strategy';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../providers/services/auth.service';
 import { UsersModule } from './users.module';
 import { AuthHelper } from '../providers/helpers/auth.helper';
 
