@@ -6,12 +6,9 @@ import { ConfigService } from '@nestjs/config';
 import { AuthService } from '../../../../src/core/providers/services/auth.service';
 import { UsersService } from '../../../../src/core/providers/services/users.service';
 import { User } from '../../../../src/core/entities/user.entity';
-import { Role } from '../../../../src/common/enums/role.enum';
 import { AuthHelper } from '../../../../src/core/providers/helpers/auth.helper';
-
-const mockJwtService: Partial<JwtService> = {
-  signAsync: jest.fn().mockResolvedValue('fakeJwtToken'),
-};
+import { mockJwtService, mockTokens } from '../../mocks/auth.mock';
+import { UsersRepositoryFake, mockUser } from '../../mocks/users.mock';
 
 let compareResponse = true;
 
@@ -23,14 +20,6 @@ jest.mock('bcrypt', () => ({
     return 'hash';
   },
 }));
-
-const mockUser: Partial<User> = {
-  id: 'id',
-  username: 'fake',
-  role: Role.User,
-  refreshToken: 'refreshToken',
-  password: 'fakePass',
-};
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -50,13 +39,7 @@ describe('AuthService', () => {
         UsersService,
         {
           provide: getRepositoryToken(User),
-          useValue: {
-            preload: jest.fn().mockResolvedValue(mockUser),
-            find: jest.fn().mockResolvedValue(mockUser),
-            findOne: jest.fn().mockResolvedValue(mockUser),
-            findByUsername: jest.fn().mockResolvedValue(mockUser),
-            save: jest.fn(),
-          },
+          useClass: UsersRepositoryFake,
         },
         ConfigService,
         AuthHelper,
@@ -80,29 +63,28 @@ describe('AuthService', () => {
 
   it('should login a registered user', async () => {
     const payload = { id: mockUser.id, role: mockUser.role };
-    const hashedRefreshToken = 'hashedRefreshToken';
-    const spyUserUpdate = jest.spyOn(usersService, 'update');
-    const spyHashToken = jest
-      .spyOn(authHelper, 'hashToken')
-      .mockResolvedValue(hashedRefreshToken);
+    const spyGetTokens = jest
+      .spyOn(service, 'getTokens')
+      .mockResolvedValue(mockTokens);
+    const spyUpdateRefreshToken = jest
+      .spyOn(service, 'updateRefreshToken')
+      .mockImplementation(() => Promise.resolve());
 
     const result = await service.login(payload);
 
-    expect(spyHashToken).toHaveBeenCalledWith('fakeJwtToken');
-    expect(spyUserUpdate).toHaveBeenCalled();
-    expect(spyUserUpdate).toHaveBeenCalledWith(payload.id, {
-      refreshToken: hashedRefreshToken,
-    });
-    expect(mockJwtService.signAsync).toHaveBeenCalled();
-    expect(result).toEqual({
-      accessToken: 'fakeJwtToken',
-      refreshToken: 'fakeJwtToken',
-    });
+    expect(spyGetTokens).toHaveBeenCalledWith(payload);
+    expect(spyUpdateRefreshToken).toHaveBeenCalledWith(
+      payload.id,
+      result.refreshToken,
+    );
+    expect(result).toEqual(mockTokens);
   });
 
   it('should logout a logged user', async () => {
     const userId = mockUser.id;
-    const spyUserServiceUpdate = jest.spyOn(usersService, 'update');
+    const spyUserServiceUpdate = jest
+      .spyOn(usersService, 'update')
+      .mockResolvedValue(mockUser);
 
     await service.logout(userId);
 
@@ -117,11 +99,13 @@ describe('AuthService', () => {
       userId: mockUser.id,
       refreshToken: mockUser.refreshToken,
     };
-    const spyUserServiceUpdate = jest.spyOn(usersService, 'update');
     const hashedRefreshToken = 'hashedRefreshToken';
     const spyHashToken = jest
       .spyOn(authHelper, 'hashToken')
       .mockResolvedValue(hashedRefreshToken);
+    const spyUserServiceUpdate = jest
+      .spyOn(usersService, 'update')
+      .mockResolvedValue({ refreshToken: hashedRefreshToken, ...mockUser });
 
     await service.updateRefreshToken(payload.userId, payload.refreshToken);
 
@@ -138,7 +122,9 @@ describe('AuthService', () => {
       accessToken: fakeToken,
       refreshToken: fakeToken,
     });
-    const spyUpdateRefreshToken = jest.spyOn(service, 'updateRefreshToken');
+    const spyUpdateRefreshToken = jest
+      .spyOn(service, 'updateRefreshToken')
+      .mockImplementation(() => Promise.resolve());
     const tokens = await service.refreshTokens(payload);
 
     expect(spyGetTokens).toHaveBeenCalledWith(payload);
@@ -178,7 +164,9 @@ describe('AuthService', () => {
 
   it('should validate user', async () => {
     const payload = { username: mockUser.username, pass: mockUser.password };
-    const spyFindByUsername = jest.spyOn(usersService, 'findByUsername');
+    const spyFindByUsername = jest
+      .spyOn(usersService, 'findByUsername')
+      .mockResolvedValue(mockUser);
 
     const user = await service.validateUser(payload.username, payload.pass);
 
@@ -191,7 +179,9 @@ describe('AuthService', () => {
 
   it("should NOT validate user if passwords doesn't matches", async () => {
     const payload = { username: mockUser.username, pass: mockUser.password };
-    const spyFindByUsername = jest.spyOn(usersService, 'findByUsername');
+    const spyFindByUsername = jest
+      .spyOn(usersService, 'findByUsername')
+      .mockResolvedValue(mockUser);
     compareResponse = false;
 
     const user = await service.validateUser(payload.username, payload.pass);

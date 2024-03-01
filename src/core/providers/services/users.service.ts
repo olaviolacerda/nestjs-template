@@ -34,6 +34,7 @@ export class UsersService {
 
     const createdUser = await this.usersRepository.create(createUserDto);
     const savedUser = await this.usersRepository.save(createdUser);
+
     return this.prepareUserResponse(savedUser);
   }
 
@@ -73,7 +74,8 @@ export class UsersService {
       throw new NotFoundException(`User with id ${id} does not exist`);
     }
 
-    return this.usersRepository.save(user);
+    const savedUser = await this.usersRepository.save(user);
+    return this.prepareUserResponse(savedUser);
   }
 
   async remove(id: User['id']) {
