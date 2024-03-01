@@ -7,10 +7,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
 
-import { CreateUserDto } from '../../common/dtos/users/create-user.dto';
-import { UpdateUserDto } from '../../common/dtos/users/update-user.dto';
-import { Role } from '../../common/enums/role.enum';
-import { User } from '../entities/user.entity';
+import { CreateUserDto } from '../../../common/dtos/users/create-user.dto';
+import { UpdateUserDto } from '../../../common/dtos/users/update-user.dto';
+import { Role } from '../../../common/enums/role.enum';
+import { User } from '../../entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -19,7 +19,7 @@ export class UsersService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  prepareUserResponse(user: User): Partial<User> {
+  private prepareUserResponse(user: User): Partial<User> {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, hashPassword, ...response } = user;
     return response;

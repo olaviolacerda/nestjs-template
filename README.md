@@ -2,10 +2,9 @@
 
 <p>Pending tasks:</p>
 <ul>
-  <li>Unit testing for users</li>
-  <li>Unit testing for auth</li>
-  <li>E2E testing for auth</li>
-  <li>E2E testing for users</li>
+  <li>Unit testing</li>
+  <li>E2E testing</li>
+  <li>100% coverage</li>
   <li>Folder structure (refactor)</li>
   <li>Logging</li>
 </ul>
@@ -13,7 +12,8 @@
 <h1 align="center">Welcome to nest-typescript-template 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <img src="https://img.shields.io/badge/node-18.x-blue.svg" />
+  <img alt="Node Version" src="https://img.shields.io/badge/node-18.x-blue.svg" />
+  <a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main#5" alt="Coverage" /></a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>

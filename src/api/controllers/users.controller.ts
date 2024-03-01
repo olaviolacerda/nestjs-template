@@ -23,7 +23,7 @@ import { Role } from '../../common/enums/role.enum';
 import { UserResponse } from '../../common/responses/users/user.response';
 import { JwtAuthGuard } from '../../core/auth/guards/jwt.guard';
 import { RolesGuard } from '../../core/auth/guards/roles.guard';
-import { UsersService } from '../../core/services/users.service';
+import { UsersService } from '../../core/providers/services/users.service';
 
 @ApiTags('users')
 @Controller('users')

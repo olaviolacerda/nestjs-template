@@ -3,11 +3,11 @@ import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
 import * as bcrypt from 'bcrypt';
-import { createHash } from 'crypto';
 
-import { PayloadToken } from '../../common/types/auth.type';
-import { User } from '../entities/user.entity';
+import { PayloadToken } from '../../../common/types/auth.type';
+import { User } from '../../entities/user.entity';
 import { UsersService } from './users.service';
+import { AuthHelper } from '../helpers/auth.helper';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +15,7 @@ export class AuthService {
     private usersService: UsersService,
     private jwtService: JwtService,
     private configService: ConfigService,
+    private authHelper: AuthHelper,
   ) {}
 
   async validateUser(username: string, pass: string): Promise<Partial<User>> {
@@ -49,9 +50,7 @@ export class AuthService {
     userId: User['id'],
     refreshToken: User['refreshToken'],
   ) {
-    const hash = createHash('sha256').update(refreshToken).digest('hex');
-
-    const hashedRefreshToken = await bcrypt.hashSync(hash, 10);
+    const hashedRefreshToken = await this.authHelper.hashToken(refreshToken);
     await this.usersService.update(userId, {
       refreshToken: hashedRefreshToken,
     });
