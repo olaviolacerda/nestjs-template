@@ -8,14 +8,17 @@
 </ul>
 
 <h1 align="center">Welcome to nest-typescript-template 👋</h1>
-<p>
+<p align="center">
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <img alt="Node Version" src="https://img.shields.io/badge/node-18.x-blue.svg" />
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
   <a href='https://coveralls.io/github/olaviolacerda/nestjs-template?branch=main'>
-    <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&kill_cache=1' />
+    <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&service=github' />
+  </a>
+  <a href='https://github.com/olaviolacerda/nestjs-template/actions/workflows/github-code-scanning/codeql'>
+    <img alt='CodeQL' src='https://github.com/olaviolacerda/nestjs-template/actions/workflows/github-code-scanning/codeql/badge.svg' />
   </a>
 </p>
 
