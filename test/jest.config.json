@@ -11,8 +11,10 @@
     "!**/main.ts",
     "!src/core/entities/**",
     "!src/core/modules/**",
-    "!src/common/**"
+    "!src/common/**",
+    "!src/configurations/**"
   ],
   "coverageDirectory": "./coverage",
-  "testEnvironment": "node"
+  "testEnvironment": "node",
+  "setupFiles": ["dotenv/config"]
 }

@@ -7,13 +7,13 @@ export class UpdateUserDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  readonly username: string;
+  readonly username?: string;
 
   @ApiProperty()
   @IsEnum(Role)
   @IsNotEmpty()
-  readonly role: Role;
+  readonly role?: Role;
 
   @IsString()
-  readonly refreshToken: string;
+  readonly refreshToken?: string;
 }

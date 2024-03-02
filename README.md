@@ -2,9 +2,7 @@
 
 <p>Pending tasks:</p>
 <ul>
-  <li>Unit testing</li>
   <li>E2E testing</li>
-  <li>100% coverage</li>
   <li>Folder structure (refactor)</li>
   <li>Logging</li>
 </ul>
@@ -13,11 +11,11 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <img alt="Node Version" src="https://img.shields.io/badge/node-18.x-blue.svg" />
-  <a href='https://coveralls.io/github/olaviolacerda/nestjs-template?branch=main'>
-    <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&kill_cache=1' />
-  </a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href='https://coveralls.io/github/olaviolacerda/nestjs-template?branch=main'>
+    <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&kill_cache=1' />
   </a>
 </p>
 
@@ -87,6 +85,8 @@ Give a ⭐️ if this project helped you!
 - [TypeORM Documentation](https://typeorm.io/)
 - [A Step-by-Step Guide to Implement JWT Authentication in NestJS using Passport](https://medium.com/@camillef_58366/implementing-authentication-in-nestjs-using-passport-and-jwt-5a565aa521de)
 - [NestJS Unit Testing](https://www.tomray.dev/nestjs-unit-testing)
+- [Testing in NestJS](https://dev.to/chafroudtarek/testing-in-nestjs-a-comprehensive-guide-3hjo)
+- [Advanced Testing in NestJS](https://trilon.io/blog/advanced-testing-strategies-with-mocks-in-nestjs)
 - [Testing NestJS Repo](https://github.com/jmcdo29/testing-nestjs/tree/main)
 
 ---
