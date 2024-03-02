@@ -38,7 +38,7 @@ export class UsersService {
     return this.prepareUserResponse(savedUser);
   }
 
-  async createAdminUser(createUserDto: CreateUserDto): Promise<any> {
+  async createAdminUser(createUserDto: CreateUserDto): Promise<Partial<User>> {
     const user = await this.findByUsername(createUserDto.username);
 
     if (user) {
@@ -78,7 +78,7 @@ export class UsersService {
     return this.prepareUserResponse(savedUser);
   }
 
-  async remove(id: User['id']) {
+  async remove(id: User['id']): Promise<User> {
     const user = await this.usersRepository.findOne({ where: { id } });
 
     if (!user) {

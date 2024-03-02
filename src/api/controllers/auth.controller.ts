@@ -50,7 +50,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('logout')
   logout(@Request() req) {
-    this.authService.logout(req.user['id']);
+    return this.authService.logout(req.user['id']);
   }
 
   @ApiOperation({ summary: 'refresh tokens' })
