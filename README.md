@@ -15,7 +15,7 @@
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
   <a href='https://coveralls.io/github/olaviolacerda/nestjs-template?branch=main'>
-    <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&kill_cache=1' />
+    <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&service=github' />
   </a>
 </p>
 
