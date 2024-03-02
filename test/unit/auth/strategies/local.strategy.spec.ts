@@ -2,7 +2,7 @@ import { createMock } from '@golevelup/ts-jest';
 
 import { LocalStrategy } from '../../../../src/core/auth/strategies/local.strategy';
 import { AuthService } from '../../../../src/core/providers/services/auth.service';
-import { mockUser } from '../../mocks/users.mock';
+import { mockUser } from '../../../mocks/users.mock';
 
 describe('LocalStrategy', () => {
   let authService: AuthService;

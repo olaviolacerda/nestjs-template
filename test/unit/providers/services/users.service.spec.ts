@@ -6,7 +6,7 @@ import { User } from '../../../../src/core/entities/user.entity';
 import { Role } from '../../../../src/common/enums/role.enum';
 import { CreateUserDto } from '../../../../src/common/dtos/users/create-user.dto';
 import { UpdateUserDto } from '../../../../src/common/dtos/users/update-user.dto';
-import { UsersRepositoryFake, mockUser } from '../../mocks/users.mock';
+import { UsersRepositoryFake, mockUser } from '../../../mocks/users.mock';
 
 describe('UsersService', () => {
   let service: UsersService;
