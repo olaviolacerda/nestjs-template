@@ -2,6 +2,7 @@
 
 <p>Pending tasks:</p>
 <ul>
+  <li>Error handling</li>
   <li>E2E testing</li>
   <li>Folder structure (refactor)</li>
   <li>Logging</li>
