@@ -7,8 +7,8 @@ import { AuthService } from '../../../../src/core/providers/services/auth.servic
 import { UsersService } from '../../../../src/core/providers/services/users.service';
 import { User } from '../../../../src/core/entities/user.entity';
 import { AuthHelper } from '../../../../src/core/providers/helpers/auth.helper';
-import { mockJwtService, mockTokens } from '../../mocks/auth.mock';
-import { UsersRepositoryFake, mockUser } from '../../mocks/users.mock';
+import { mockJwtService, mockTokens } from '../../../mocks/auth.mock';
+import { UsersRepositoryFake, mockUser } from '../../../mocks/users.mock';
 
 let compareResponse = true;
 

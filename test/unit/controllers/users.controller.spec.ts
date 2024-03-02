@@ -3,10 +3,11 @@ import { getRepositoryToken } from '@nestjs/typeorm';
 
 import { UsersController } from '../../../src/api/controllers/users.controller';
 import { UsersService } from '../../../src/core/providers/services/users.service';
-import { UsersRepositoryFake, mockUser } from '../mocks/users.mock';
+import { UsersRepositoryFake, mockUser } from '../../mocks/users.mock';
 import { CreateUserDto } from '../../../src/common/dtos/users/create-user.dto';
 import { User } from '../../../src/core/entities/user.entity';
 import { Role } from '../../../src/common/enums/role.enum';
+import { UpdateUserDto } from '../../../src/common/dtos/users/update-user.dto';
 
 describe('UsersController', () => {
   let controller: UsersController;
@@ -84,6 +85,31 @@ describe('UsersController', () => {
     expect(createdUser.role).toBe(Role.Admin);
   });
 
-  it.todo('should update an user');
-  it.todo('should remove an user');
+  it('should update an user', async () => {
+    const updateUserDto: UpdateUserDto = {
+      username: 'newUsername',
+    };
+    const mockNewUser = {
+      ...mockUser,
+      username: 'newUsername',
+    };
+    const spyUpdate = jest
+      .spyOn(usersService, 'update')
+      .mockResolvedValue(mockNewUser);
+
+    const createdUser = await controller.update(mockUser.id, updateUserDto);
+
+    expect(spyUpdate).toHaveBeenCalledWith(mockUser.id, updateUserDto);
+    expect(createdUser).toEqual(mockNewUser);
+  });
+
+  it('should remove an user', async () => {
+    const spyRemove = jest
+      .spyOn(usersService, 'remove')
+      .mockResolvedValue(null);
+
+    await controller.remove(mockUser.id);
+
+    expect(spyRemove).toHaveBeenCalledWith(mockUser.id);
+  });
 });
