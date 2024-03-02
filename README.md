@@ -2,9 +2,7 @@
 
 <p>Pending tasks:</p>
 <ul>
-  <li>Unit testing</li>
   <li>E2E testing</li>
-  <li>100% coverage</li>
   <li>Folder structure (refactor)</li>
   <li>Logging</li>
 </ul>
