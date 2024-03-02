@@ -17,6 +17,9 @@
   <a href='https://coveralls.io/github/olaviolacerda/nestjs-template?branch=main'>
     <img alt='Coverage Status' src='https://coveralls.io/repos/github/olaviolacerda/nestjs-template/badge.svg?branch=main&service=github' />
   </a>
+  <a href='https://github.com/olaviolacerda/nestjs-template/actions/workflows/github-code-scanning/codeql'>
+    <img alt='CodeQL' src='https://github.com/olaviolacerda/nestjs-template/actions/workflows/github-code-scanning/codeql/badge.svg' />
+  </a>
 </p>
 
 > Cloned from Nest TypeScript starter repository and updated.
