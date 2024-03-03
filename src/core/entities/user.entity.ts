@@ -2,9 +2,10 @@ import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 import { Role } from '../../common/enums/role.enum';
+import { User } from '../../common/interfaces/users.interface';
 
 @Entity('users')
-export class User {
+export class UserEntity implements User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

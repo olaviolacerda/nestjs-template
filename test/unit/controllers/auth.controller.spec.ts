@@ -8,7 +8,7 @@ import { AuthController } from '../../../src/api/controllers/auth.controller';
 import { UsersService } from '../../../src/core/providers/services/users.service';
 import { AuthService } from './../../../src/core/providers/services/auth.service';
 import { UsersRepositoryFake, mockUser } from '../../mocks/users.mock';
-import { User } from '../../../src/core/entities/user.entity';
+import { UserEntity } from '../../../src/core/entities/user.entity';
 import { AuthHelper } from '../../../src/core/providers/helpers/auth.helper';
 import { mockTokens } from '../../mocks/auth.mock';
 
@@ -23,7 +23,7 @@ describe('AuthController', () => {
       providers: [
         UsersService,
         {
-          provide: getRepositoryToken(User),
+          provide: getRepositoryToken(UserEntity),
           useClass: UsersRepositoryFake,
         },
         AuthService,

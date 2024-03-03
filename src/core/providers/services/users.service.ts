@@ -10,12 +10,13 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from '../../../common/dtos/users/create-user.dto';
 import { UpdateUserDto } from '../../../common/dtos/users/update-user.dto';
 import { Role } from '../../../common/enums/role.enum';
-import { User } from '../../entities/user.entity';
+import { User } from '../../../common/interfaces/users.interface';
+import { UserEntity } from '../../entities/user.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User)
+    @InjectRepository(UserEntity)
     private readonly usersRepository: Repository<User>,
   ) {}
 
@@ -64,7 +65,10 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async update(id: User['id'], updateUserDto: Partial<UpdateUserDto>) {
+  async update(
+    id: User['id'],
+    updateUserDto: Partial<UpdateUserDto>,
+  ): Promise<Partial<User>> {
     const user = await this.usersRepository.preload({
       id,
       ...updateUserDto,

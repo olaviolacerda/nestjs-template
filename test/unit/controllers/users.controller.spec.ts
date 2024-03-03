@@ -5,7 +5,7 @@ import { UsersController } from '../../../src/api/controllers/users.controller';
 import { UsersService } from '../../../src/core/providers/services/users.service';
 import { UsersRepositoryFake, mockUser } from '../../mocks/users.mock';
 import { CreateUserDto } from '../../../src/common/dtos/users/create-user.dto';
-import { User } from '../../../src/core/entities/user.entity';
+import { UserEntity } from '../../../src/core/entities/user.entity';
 import { Role } from '../../../src/common/enums/role.enum';
 import { UpdateUserDto } from '../../../src/common/dtos/users/update-user.dto';
 
@@ -20,7 +20,7 @@ describe('UsersController', () => {
       providers: [
         UsersService,
         {
-          provide: getRepositoryToken(User),
+          provide: getRepositoryToken(UserEntity),
           useClass: UsersRepositoryFake,
         },
       ],
