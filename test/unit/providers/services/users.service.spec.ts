@@ -209,7 +209,7 @@ describe('UsersService', () => {
       expect(spyPreload).toHaveBeenCalledWith({ id: userId, ...updateUserDto });
       expect(spySave).not.toHaveBeenCalled();
       expect(error).toBeDefined();
-      expect(error.message).toBe(`User with id ${userId} does not exist`);
+      expect(error.message).toBe(`User not found: ${userId}`);
     }
   });
 
@@ -240,7 +240,7 @@ describe('UsersService', () => {
       expect(spyFindOne).toHaveBeenCalledWith({ where: { id: userId } });
       expect(spyRemove).not.toHaveBeenCalled();
       expect(error).toBeDefined();
-      expect(error.message).toBe(`User with id ${userId} does not exist`);
+      expect(error.message).toBe(`User not found: ${userId}`);
     }
   });
 });

@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -15,6 +16,8 @@ import { UserEntity } from '../../entities/user.entity';
 
 @Injectable()
 export class UsersService {
+  private readonly logger = new Logger(UsersService.name);
+
   constructor(
     @InjectRepository(UserEntity)
     private readonly usersRepository: Repository<User>,
@@ -30,6 +33,7 @@ export class UsersService {
     const user = await this.findByUsername(createUserDto.username);
 
     if (user) {
+      this.logger.error(`create: User not found: ${createUserDto.username}`);
       throw new BadRequestException();
     }
 
@@ -43,6 +47,10 @@ export class UsersService {
     const user = await this.findByUsername(createUserDto.username);
 
     if (user) {
+      this.logger.error(
+        `createAdminUser: User not found: ${createUserDto.username}`,
+      );
+
       throw new BadRequestException();
     }
 
@@ -75,7 +83,9 @@ export class UsersService {
     });
 
     if (!user) {
-      throw new NotFoundException(`User with id ${id} does not exist`);
+      this.logger.error(`update: User not found: ${id}`);
+
+      throw new NotFoundException(`User not found: ${id}`);
     }
 
     const savedUser = await this.usersRepository.save(user);
@@ -86,7 +96,8 @@ export class UsersService {
     const user = await this.usersRepository.findOne({ where: { id } });
 
     if (!user) {
-      throw new NotFoundException(`User with id ${id} does not exist`);
+      this.logger.error(`remove: User not found: ${id}`);
+      throw new NotFoundException(`User not found: ${id}`);
     }
 
     return this.usersRepository.remove(user);

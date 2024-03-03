@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
@@ -14,6 +14,8 @@ import { User } from '../../../common/interfaces/users.interface';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
@@ -25,6 +27,7 @@ export class AuthService {
     const user = await this.usersService.findByUsername(username);
 
     if (!user) {
+      this.logger.error(`User not found: ${username}`);
       throw new BadRequestException('Something is wrong with your credentials');
     }
 
