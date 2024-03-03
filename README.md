@@ -5,7 +5,6 @@
   <li>Error handling</li>
   <li>E2E testing</li>
   <li>Folder structure (refactor)</li>
-  <li>Logging</li>
 </ul>
 
 <h1 align="center">Welcome to nest-typescript-template 👋</h1>

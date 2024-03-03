@@ -1,8 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 import { Role } from '../../../common/enums/role.enum';
+import { User } from './../../interfaces/users.interface';
 
-export class UserResponse {
+export class UserResponse implements User {
   @ApiProperty({ example: '123e4567-e89b-12d3-a456-426655440000' })
   readonly id: string;
 

@@ -1,6 +1,8 @@
 import { JwtService } from '@nestjs/jwt';
 
-export const mockTokens = {
+import { Tokens } from '../../src/common/interfaces/auth.interface';
+
+export const mockTokens: Tokens = {
   accessToken: 'fakeJwtToken',
   refreshToken: 'fakeJwtToken',
 };

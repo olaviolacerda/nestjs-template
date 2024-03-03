@@ -1,16 +1,21 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 
 import * as bcrypt from 'bcrypt';
 
-import { PayloadToken } from '../../../common/types/auth.type';
-import { User } from '../../entities/user.entity';
+import {
+  Tokens,
+  PayloadToken,
+} from '../../../common/interfaces/auth.interface';
 import { UsersService } from './users.service';
 import { AuthHelper } from '../helpers/auth.helper';
+import { User } from '../../../common/interfaces/users.interface';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
     private usersService: UsersService,
     private jwtService: JwtService,
@@ -22,6 +27,7 @@ export class AuthService {
     const user = await this.usersService.findByUsername(username);
 
     if (!user) {
+      this.logger.error(`User not found: ${username}`);
       throw new BadRequestException('Something is wrong with your credentials');
     }
 
@@ -36,33 +42,33 @@ export class AuthService {
     return null;
   }
 
-  async login(user: PayloadToken) {
+  async login(user: PayloadToken): Promise<Tokens> {
     const tokens = await this.getTokens({ id: user.id, role: user.role });
     await this.updateRefreshToken(user.id, tokens.refreshToken);
     return tokens;
   }
 
-  async logout(userId: User['id']) {
+  async logout(userId: User['id']): Promise<Partial<User>> {
     return this.usersService.update(userId, { refreshToken: null });
   }
 
   async updateRefreshToken(
     userId: User['id'],
     refreshToken: User['refreshToken'],
-  ) {
+  ): Promise<void> {
     const hashedRefreshToken = await this.authHelper.hashToken(refreshToken);
     await this.usersService.update(userId, {
       refreshToken: hashedRefreshToken,
     });
   }
 
-  async refreshTokens(user: PayloadToken) {
+  async refreshTokens(user: PayloadToken): Promise<Tokens> {
     const tokens = await this.getTokens({ id: user.id, role: user.role });
     await this.updateRefreshToken(user.id, tokens.refreshToken);
     return tokens;
   }
 
-  async getTokens(user: PayloadToken) {
+  async getTokens(user: PayloadToken): Promise<Tokens> {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(user, {
         secret: this.configService.get<string>('JWT_SECRET'),

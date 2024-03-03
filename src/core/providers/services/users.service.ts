@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Injectable,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -10,12 +11,15 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from '../../../common/dtos/users/create-user.dto';
 import { UpdateUserDto } from '../../../common/dtos/users/update-user.dto';
 import { Role } from '../../../common/enums/role.enum';
-import { User } from '../../entities/user.entity';
+import { User } from '../../../common/interfaces/users.interface';
+import { UserEntity } from '../../entities/user.entity';
 
 @Injectable()
 export class UsersService {
+  private readonly logger = new Logger(UsersService.name);
+
   constructor(
-    @InjectRepository(User)
+    @InjectRepository(UserEntity)
     private readonly usersRepository: Repository<User>,
   ) {}
 
@@ -29,6 +33,7 @@ export class UsersService {
     const user = await this.findByUsername(createUserDto.username);
 
     if (user) {
+      this.logger.error(`create: User not found: ${createUserDto.username}`);
       throw new BadRequestException();
     }
 
@@ -42,6 +47,10 @@ export class UsersService {
     const user = await this.findByUsername(createUserDto.username);
 
     if (user) {
+      this.logger.error(
+        `createAdminUser: User not found: ${createUserDto.username}`,
+      );
+
       throw new BadRequestException();
     }
 
@@ -64,14 +73,19 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  async update(id: User['id'], updateUserDto: Partial<UpdateUserDto>) {
+  async update(
+    id: User['id'],
+    updateUserDto: Partial<UpdateUserDto>,
+  ): Promise<Partial<User>> {
     const user = await this.usersRepository.preload({
       id,
       ...updateUserDto,
     });
 
     if (!user) {
-      throw new NotFoundException(`User with id ${id} does not exist`);
+      this.logger.error(`update: User not found: ${id}`);
+
+      throw new NotFoundException(`User not found: ${id}`);
     }
 
     const savedUser = await this.usersRepository.save(user);
@@ -82,7 +96,8 @@ export class UsersService {
     const user = await this.usersRepository.findOne({ where: { id } });
 
     if (!user) {
-      throw new NotFoundException(`User with id ${id} does not exist`);
+      this.logger.error(`remove: User not found: ${id}`);
+      throw new NotFoundException(`User not found: ${id}`);
     }
 
     return this.usersRepository.remove(user);

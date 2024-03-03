@@ -2,11 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 
 import { UsersService } from '../../../../src/core/providers/services/users.service';
-import { User } from '../../../../src/core/entities/user.entity';
+import { UserEntity } from '../../../../src/core/entities/user.entity';
 import { Role } from '../../../../src/common/enums/role.enum';
 import { CreateUserDto } from '../../../../src/common/dtos/users/create-user.dto';
 import { UpdateUserDto } from '../../../../src/common/dtos/users/update-user.dto';
 import { UsersRepositoryFake, mockUser } from '../../../mocks/users.mock';
+import { User } from '../../../../src/common/interfaces/users.interface';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -17,14 +18,16 @@ describe('UsersService', () => {
       providers: [
         UsersService,
         {
-          provide: getRepositoryToken(User),
+          provide: getRepositoryToken(UserEntity),
           useClass: UsersRepositoryFake,
         },
       ],
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-    repository = module.get<UsersRepositoryFake>(getRepositoryToken(User));
+    repository = module.get<UsersRepositoryFake>(
+      getRepositoryToken(UserEntity),
+    );
   });
 
   afterEach(() => {
@@ -206,7 +209,7 @@ describe('UsersService', () => {
       expect(spyPreload).toHaveBeenCalledWith({ id: userId, ...updateUserDto });
       expect(spySave).not.toHaveBeenCalled();
       expect(error).toBeDefined();
-      expect(error.message).toBe(`User with id ${userId} does not exist`);
+      expect(error.message).toBe(`User not found: ${userId}`);
     }
   });
 
@@ -237,7 +240,7 @@ describe('UsersService', () => {
       expect(spyFindOne).toHaveBeenCalledWith({ where: { id: userId } });
       expect(spyRemove).not.toHaveBeenCalled();
       expect(error).toBeDefined();
-      expect(error.message).toBe(`User with id ${userId} does not exist`);
+      expect(error.message).toBe(`User not found: ${userId}`);
     }
   });
 });
